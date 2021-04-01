@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li *ngFor="let p of products" class="list-group-item">
+        {{p.id}}
+        {{p.name}}
+        <a [routerLink]="['/products',p.id]">detay</a>
+        <a [routerLink]="['/products',p.id,'edit']">edit</a>
+
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <a class="btn btn-primary" routerLink="/products" [queryParams]="{page:1,order:'bestselling'}">En çok satanlar</a>
+    <a class="btn btn-primary" routerLink="/products" [queryParams]="{page:1,order:'newest'}">En yeni ürünler</a>
+    <button class="btn btn-primary" (click)="loadProducts()">Sayfayı Yenile</button>
+    <p>
+      <a routerLink="/products">products</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+<!-- eğerki /product demeyip direk product deseydik localhost:4200/product/product olurdu hata verirdi
+fakat /products diyince direk kendi dizinini alıyor diğer türlü ana yolu alıyor -->
+
